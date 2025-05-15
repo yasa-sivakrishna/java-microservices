@@ -1,0 +1,48 @@
+spring:
+  application:
+    name: gatewayserver
+  config:
+    import: "configserver:http://localhost:8071/"
+  cloud:
+    gateway:
+      discovery:
+        locator:
+          enabled: false
+          lower-case-service-id: true
+      httpclient:
+        connect-timeout: 1000
+        response-timeout: 15s
+  security:
+    oauth2:
+     resourceserver:
+       jwt:
+         jwk-set-uri:  "http://localhost:7080/realms/master/protocol/openid-connect/certs"
+management:
+  endpoints:
+    web:
+      exposure:
+        include: "*"
+  endpoint:
+    gateway:
+      access: unrestricted
+  info:
+    env:
+      enabled: true
+  metrics:
+    tags:
+      application: ${spring.application.name}
+info:
+  app:
+    name: "gatewayserver"
+    description: "SkyOrg Gateway Server Application"
+    version: "1.0.0"
+resilience4j:
+  circuitbreaker:
+    default:
+      slidingWindowSize: 10
+      permittedNumberOfCallsInHalfOpenState: 4
+      failureRateThreshold: 30
+      waitDurationInOpenState: 10000
+
+
+
