@@ -10,7 +10,7 @@ The repository comprises the following modules:
 
 * **configserver**: Centralized configuration server using Spring Cloud Config.
 * **eurekaserver**: Service registry for discovering microservices using Netflix Eureka.
-* **gatewayserver**: API Gateway for routing requests to appropriate microservices using Spring Cloud Gateway.([GitHub][1])
+* **gatewayserver**: API Gateway for routing requests to appropriate microservices using Spring Cloud Gateway.
 
 ## Prerequisites
 
